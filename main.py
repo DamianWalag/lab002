@@ -93,7 +93,7 @@ class Symulacja:
             outfile = open(f"{args.nazwa_pliku_z_magnetyzacja}.txt", 'w')
 
         for m, index in track(self.generator(), total=self.N):
-            self.Hamiltonian()
+            self.hamiltonian()
             #jesli podano prefix to zapisujemy png
             if self.prefix != []:   
                 img = self.obrazek()
