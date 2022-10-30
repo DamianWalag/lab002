@@ -1,26 +1,17 @@
-from sys import prefix
 from PIL import Image, ImageDraw
 from ast import arg
 import argparse
-from matplotlib import pyplot as plt
-from pickletools import optimize
 import numpy as np
 import scipy.signal as sp
-import math
-import imageio.v2 as imageio
 from rich.progress import track
-import matplotlib
-matplotlib.use('Agg')
-plt.rcParams["figure.figsize"] = (20, 20)
-plt.rcParams.update({'font.size': 22})
 
 
 # obsluga argumentow
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-n', '--bok_siatki', default=500)
-parser.add_argument('-j', '--wartosc_J', default=1)
-parser.add_argument('-b', '--wartosc_beta', default=0.1)
+parser.add_argument('-j', '--wartosc_J', default=10)
+parser.add_argument('-b', '--wartosc_beta', default=1)
 parser.add_argument('-B', '--wartosc_B', default=1)
 parser.add_argument('-N', '--liczba_krokow', default=10)
 parser.add_argument('-g', '--gestosc_dodatnich_spinow', default=0.5)
@@ -47,7 +38,6 @@ class Symulacja:
         self.spiny = np.concatenate((-np.ones(int(np.floor(self.rozmiar**2 * (1-self.gestosc)))), np.ones(int(np.ceil(self.rozmiar**2 * self.gestosc)))))
         np.random.shuffle(self.spiny)
         self.spiny = self.spiny.reshape(self.rozmiar, self.rozmiar)
-        print(np.sum(self.spiny[self.spiny==1]))
     def obrazek(self):
         img = Image.new('RGB', (2000, 2000), (0, 0, 0))
         draw = ImageDraw.Draw(img)
@@ -66,9 +56,6 @@ class Symulacja:
 
         while index < self.N:
             magnetyzacja = (np.sum(self.spiny)/(self.rozmiar*self.rozmiar))
-            
-     
-
             index += 1
             yield magnetyzacja, index
 
