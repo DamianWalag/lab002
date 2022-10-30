@@ -59,7 +59,7 @@ class Symulacja:
             index += 1
             yield magnetyzacja, index
 
-    def Hamiltonian(self):
+    def hamiltonian(self):
         H = 0
         kernel = (np.array([[0, 1, 0], [1, 0, 1], [0, 1, 0]]))
         # wrap załatwia periodyczne warunki brzegowe B)
