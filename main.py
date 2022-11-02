@@ -25,9 +25,9 @@ args = parser.parse_args()
 class Symulacja:
     def __init__(self):
         self.rozmiar = int(args.bok_siatki)
-        self.J = int(args.wartosc_J)
-        self.beta = int(args.wartosc_beta)
-        self.B = int(args.wartosc_B)
+        self.J = float(args.wartosc_J)
+        self.beta = float(args.wartosc_beta)
+        self.B = float(args.wartosc_B)
         self.N = int(args.liczba_krokow)
         self.prefix = args.prefix_nazw_rysonkow
         self.gestosc = float(args.gestosc_dodatnich_spinow)
