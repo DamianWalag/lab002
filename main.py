@@ -21,7 +21,6 @@ parser.add_argument('-m', '--nazwa_pliku_z_magnetyzacja', default=[])
 
 args = parser.parse_args()
 
-
 class Symulacja:
     def __init__(self):
         self.rozmiar = int(args.bok_siatki)
